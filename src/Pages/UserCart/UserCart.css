@@ -1,0 +1,145 @@
+.userCart__header {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem auto;
+}
+
+.userCart__header span {
+  width: 25%;
+  color: #d6cab0;
+  text-align: center;
+  text-align: center;
+  font-size: 16px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #d6cab0;
+  padding: 1rem 0;
+}
+
+.userCart__header span.userCart__activeItem {
+  color: #9f212f;
+  border-bottom: 2px solid #9f212f;
+}
+
+.userCart__body{
+    display: flex;
+}
+
+.userCart__body table {
+  width: 60%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  margin: 2rem auto;
+}
+
+.userCart__body table tr td {
+  width: 25%;
+  padding: 1rem 0;
+  text-align: center;
+  border-bottom: 1px solid #d6cab0;
+}
+
+.userCart__product {
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.userCart__product img {
+  width: 20%;
+}
+
+.userCart__product p {
+  color: #777;
+  font-size: 16px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 2px;
+}
+
+button {
+  background-color: transparent;
+  color: #9f212f;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.userCart__total{
+    height: fit-content;
+    width: 25%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+    border: 1px solid #d6cab0;
+    padding: 2rem;
+}
+
+.userCart__totalInfo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+}
+
+.userCart__payInfo{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.userCart__payInfo span{
+    color: #777;
+    font-size: 16px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 2px;
+}
+
+.userCart__totalInfoCart{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.userCart__totalInfoCart span{
+    color: #777;
+    font-size: 20px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 2px;
+}
+
+.userCart__buttons{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+}

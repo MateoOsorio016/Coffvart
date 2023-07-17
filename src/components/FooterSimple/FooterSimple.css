@@ -1,0 +1,27 @@
+.footerSimple {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 6.5rem;
+  background-color: #9f212f;
+}
+
+.footerSimple span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.footerSimple span a {
+  color: #fff;
+  text-decoration: none;
+}

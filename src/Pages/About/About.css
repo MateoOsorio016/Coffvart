@@ -1,0 +1,45 @@
+.contentAbout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 6rem;
+  gap: 6rem;
+}
+
+.contentAbout .rowAbout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3.25rem;
+}
+
+.contentAbout .rowAbout .rowAbout__text {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.contentAbout .rowAbout .rowAbout__text h2 {
+  color: #000;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 2rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.rowAbout__paragraph {
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 2.5px;
+  text-align: justify;
+}

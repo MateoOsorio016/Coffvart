@@ -1,0 +1,118 @@
+.userMenu{
+    width: 100%;
+    height: 172px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.userMenu .userMenu__logo{
+    width: 100%;
+    height: 100%;
+    max-height: 110px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userMenu .userMenu__logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.userMenu .userMenu__menu{
+    width: 100%;
+    padding: 0 0 .8rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.userMenu .userMenu__menu ul{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.userMenu .userMenu__menu ul .userMenu__nav__item{
+    list-style: none;
+}
+
+.userMenu .userMenu__menu ul .userMenu__nav__item .userMenuItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.2rem 1rem;
+    color: #9F212F;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+}
+
+.userMenu .userMenu__menu ul .userMenu__nav__item .userMenuItem:hover{
+    background-color: #9F212F;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.userMenu .userMenu__menu ul .userMenu__nav__item .userMenuItem.userMenuActive{
+    border-bottom: 2px solid #9F212F;
+}
+
+.userMenu .userMenu__menu ul .userMenu__nav__item .userMenuItem.userMenuActive:hover{
+    background-color: #D6CAB0;
+    color: #9F212F  ;
+}
+
+.userMenu .userMenu__huincha {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: #D6CAB0;
+    padding: 0.2rem 0;
+}
+
+.userMenu .userMenu_opciones{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.userMenu .userMenu_opciones .userMenu_opciones__item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.userMenu .userMenu_opciones .userMenu_opciones__item svg{
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: #9F212F;
+}
+
+.userMenu .userMenu_opciones .userMenu_opciones__item:hover{
+    transform: scale(1.1);
+}
+.userMenu .userMenu_opciones .userMenu_opciones__item:hover{
+    transform: scale(1.1);
+}

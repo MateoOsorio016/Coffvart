@@ -1,0 +1,94 @@
+.userFooter__rowOne {
+  background-color: #d6cab0;
+  padding: 5.875rem 10rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.userFooter__col {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.userFooter__col:has(img) {
+  width: 28%;
+}
+
+.userFooter__col h4 {
+  color: #9f212f;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.userFooter__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  list-style: none;
+}
+
+.userFooter__col ul a {
+  color: #000;
+  font-size: 16px;
+  font-family: Montserrat;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: 1.6px;
+  text-decoration: none;
+  position: relative;
+}
+
+.userFooter__col ul li a::after{
+    content: '';
+    width: 0%;
+    display: block;
+    height: 2px;
+    background-color: #9f212f;
+    position: absolute;
+    bottom: -2px;
+    transition: width .3s ease-in-out;
+}
+
+.userFooter__col ul li a:hover::after{
+    width: 100%;
+}
+
+
+.userFooter__col img {
+  width: 100%;
+  height: 100;
+  object-fit: cover;
+}
+
+.userFooter__col .userFooter__socialMedia {
+  flex-direction: row;
+}
+
+.userFooter__col .userFooter__socialMedia svg {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.userFooter__rowTwo {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  background: #9f212f;
+}
+
+.userFooter__rowTwo span {
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}

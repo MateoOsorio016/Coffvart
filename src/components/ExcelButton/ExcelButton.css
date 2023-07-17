@@ -1,0 +1,16 @@
+.excelButton {
+    background-color: #9F212F;
+    border: none;
+    color: white;
+    padding: 1rem 2rem; /* Aumenta el tamaño del padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.4rem; /* Aumenta el tamaño de la fuente */
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.excelButton:hover {
+    background-color: #C92A3A;
+}

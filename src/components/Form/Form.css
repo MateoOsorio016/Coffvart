@@ -1,0 +1,175 @@
+/* Form Styles */
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 90%;
+	/*max-width: 500px;*/
+	padding: 15px;
+	margin: auto;
+	background: #fff;
+	gap: 1rem;
+}
+  
+.formRow {
+	display: flex;
+	gap: 1rem;
+	width: 100%;
+  }
+.formRow .inputControl {
+	width: 100%;
+  }
+  
+form h2 {
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-transform: capitalize;
+	color: #9f212f;
+	margin-bottom: 1rem;
+}
+
+/* General Inputs */
+
+form .inputCheckbox{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	position: relative;
+	gap: 0.5rem;
+}
+
+form .inputCheckbox input[type="checkbox"] {
+	cursor: pointer;
+	background-color: #fff;
+	width: 12px;
+	height: 12px;
+	appearance: none;
+	border: 2px solid #888;
+	border-radius: 50%;
+	outline: none;
+	position: relative;
+}
+
+form .inputCheckbox input[type="checkbox"]::before {
+	content: '';
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	border-radius: 50%; /* Ajusta el valor de la propiedad border-radius según desees */
+	transition: background-color 0.3s ease-in-out;
+}
+
+form .inputCheckbox input[type="checkbox"]:checked::before {
+	background-color: #9f212f;
+}
+
+form .inputControl {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	position: relative;
+}
+
+form .inputControl input {
+	width: 100%;
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+	border: 1px solid #d6cab0;
+	outline: none;
+	font-size: 1rem;
+	font-weight: lighter;
+}
+
+form .inputControl input::placeholder {
+	color: transparent;
+}
+
+form .inputControl label {
+	position: absolute;
+	top: 50%;
+	left: 1rem;
+	transform: translateY(-50%);
+	font-size: 1rem;
+	font-weight: lighter;
+	color: #d6cab0;
+	pointer-events: none;
+	transition: all 0.3s ease-in-out;
+	background: #fff;
+	padding: 0 0.25rem;
+}
+
+form .inputControl input:focus {
+	border: 2px solid #9f212f;
+}
+
+form .inputControl input:focus ~ label {
+	top: 0;
+	font-size: 0.8rem;
+	color: #9f212f;
+}
+
+form .inputControl input:not(:focus):not(:placeholder-shown) ~ label {
+	top: 0;
+	font-size: 0.8rem;
+	color: #d6cab0;
+}
+
+/* Select Input */
+
+form .selectControl {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+}
+
+form .selectControl select {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid #d6cab0;
+    outline: none;
+    font-size: 1rem;
+    font-weight: lighter;
+    appearance: none;
+    background: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-512.png) no-repeat right #fff;
+    background-position: 95%;
+    background-size: 15px;
+}
+
+form .selectControl label{
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    font-weight: lighter;
+    color: #d6cab0;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+    background: #fff;
+    padding: 0 0.25rem;
+}
+
+form .selectControl select:focus {
+    border: 2px solid #9f212f;
+}
+
+form .selectControl select:focus ~ label {
+    top: 0;
+    font-size: 0.8rem;
+    color: #9f212f;
+}
+
+form .selectControl.active select:not(:focus) ~ label {
+    top: 0;
+    font-size: 0.8rem;
+    color: #d6cab0;
+}
