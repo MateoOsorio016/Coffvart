@@ -34,22 +34,39 @@ export const PedidosList = () => {
         });
       }
 
-    const dbcolumns = ['id', 'Nit', 'Proveedor', 'Telefono', 'Fecha' ,'Total', 'Estado'];
-    const columns = ['id', 'Nit', 'Cliente', 'Telefono', 'Fecha', 'Total', 'Estado'];
-    const pedidos = data.pedidos || data;
-    const datoQuemado = 100; // Valor que deseas agregar a la columna 'Total'
-
-const nuevoPedido = {
-  id: 1,
-  Nit: '123456789',
-  Proveedor: 'Mateo Osorio',
-  Telefono: '987654321',
-  Fecha: '2023-07-17',
-  Total: datoQuemado,
-  Estado: 'Pendiente'
-};
-
-pedidos.push(nuevoPedido);
+      interface Pedido {
+        id: number;
+        Nit: string;
+        Proveedor: string;
+        Telefono: string;
+        Fecha: string;
+        Total: number;
+        Estado: string;
+      }
+      
+      const dbcolumns = ['id', 'Nit', 'Proveedor', 'Telefono', 'Fecha', 'Total', 'Estado'];
+      const columns = ['id', 'Nit', 'Cliente', 'Telefono', 'Fecha', 'Total', 'Estado'];
+      const pedidos: Pedido[] = data.pedidos || data;
+      
+      const datoQuemado = 148000; // Valor que deseas agregar a la columna 'Total'
+      
+      const nuevoPedido: Pedido = {
+        id: 1,
+        Nit: '123456789',
+        Proveedor: 'Mateo Osorio',
+        Telefono: '987654321',
+        Fecha: '2023-07-17',
+        Total: datoQuemado,
+        Estado: 'Pendiente'
+      };
+      
+      // Verificar si el registro ya existe en el array pedidos
+      const existeRegistro = pedidos.some((pedido: Pedido) => pedido.id === nuevoPedido.id);
+      
+      if (!existeRegistro) {
+        pedidos.push(nuevoPedido); // Agregar el nuevo pedido solo si no existe previamente
+      }
+      
     console.log(pedidos)
 
     const buttonsActions = [

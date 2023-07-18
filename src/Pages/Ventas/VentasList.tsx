@@ -33,10 +33,32 @@ export const VentasList = () => {
           }
         });
       }
+      
+      interface Venta {
+        id: number;
+        Factura: string;
+        Cliente: string;
+        Subtotal: number;
+        Estado: string;
+      }
+      
 
-    const dbcolumns = ['id', 'Factura', 'Cliente', 'Producto', 'Subtotal', 'IVA', 'Total'];
-    const columns = ['id', 'Factura', 'Cliente', 'Producto', 'Subtotal', 'IVA', 'Total'];
-    const ventas = data.ventas || data;
+    const dbcolumns = ['id', 'Factura', 'Cliente', 'Subtotal', 'Estado' ];
+    const columns = ['id', 'Factura', 'Cliente', 'Subtotal', 'Estado'];
+    const ventas : Venta[] = data.ventas || data;
+    const datoQuemado = 'En proceso';
+    const nuevoPedido: Venta = {
+      id: 1,
+      Factura: '123456789',
+      Cliente: 'Mateo Osorio',
+      Subtotal: 198000,
+      Estado: datoQuemado
+    };
+    const existeRegistro = ventas.some((pedido: Venta) => pedido.id === nuevoPedido.id);
+      
+    if (!existeRegistro) {
+      ventas.push(nuevoPedido); // Agregar el nuevo pedido solo si no existe previamente
+    }
     console.log(data)
 
     const buttonsActions = [
@@ -65,8 +87,8 @@ export const VentasList = () => {
     )
 }
 const DetalleCompra = ({ showModal }: any) => {
-    const dbcolumns = ['id', 'Producto', 'Categoria', 'Cantidad', 'ValorUnitario', 'Total'];
-    const columns = ['id', 'Producto','Categoria', 'Cantidad', 'ValorUnitario', 'Total'];
+    const dbcolumns = ['id', 'Producto','Cantidad', 'ValorUnitario', 'IVA',  'Subtotal', 'Total'];
+    const columns = ['id', 'Producto','Cantidad', 'ValorUnitario', 'IVA',  'Subtotal', 'Total'];
     const shop = [
       {
         id: 1,
@@ -74,6 +96,8 @@ const DetalleCompra = ({ showModal }: any) => {
         Categoria: 'Grano',
         Cantidad: 35,
         ValorUnitario: 6000,
+        IVA:19,
+        Subtotal: 198000,
         Total: 210000
       }
     ]

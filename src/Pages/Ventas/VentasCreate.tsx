@@ -87,13 +87,28 @@ export const VentasCreate = () => {
 		},
 		{
 			name: 'Producto',
-			type: 'text',
+			type: 'select',
 			label: 'Producto',
+			options: [
+				{ value: 'Cafe Amargo', label: 'Cafe Amargo' },
+				{ value: 'Cafe Dulce', label: 'Cafe Dulce' },
+			],
 		},
 		{
 			name: 'Cantidad',
 			type: 'number',
 			label: 'Cantidad',
+		},
+		{
+			name: 'Estado',
+			type: 'select',
+			label: 'Estado',
+			options: [
+				{ value: 'en proceso', label: 'En proceso' },
+				{ value: 'Enviado', label: 'Enviado' },
+				{ value: 'Entregado', label: 'Entregado' },
+
+			],
 		},
 	];
 	return (
