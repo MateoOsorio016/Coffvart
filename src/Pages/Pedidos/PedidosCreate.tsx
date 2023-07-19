@@ -206,7 +206,7 @@ export const PedidosCreate = () => {
                             Categoria: 'Molido',
 							Cantidad: '- 15 +',
                             Subtotal: 5340,
-                            IVA: '19%',
+                            IVA: 19,
                             Total: 5890,
 						}
 					]}
