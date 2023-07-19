@@ -11,9 +11,9 @@ export const PedidosList = () => {
     const {data, error, setBodyRequest, setMethodState, setUrlState} = useFetch({ url: 'https://coffevart.onrender.com/api/pedidos'});
     function handleDelete(id: string) {
         Swal.fire({
-          title: "Esta seguro de eliminar el Pedido?",
+          title: "Esta seguro de cambiar el estado del Pedido?",
           showDenyButton: true,
-          confirmButtonText: "Eliminar",
+          confirmButtonText: "Confirmar",
           denyButtonText: `Cancelar`,
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
@@ -84,7 +84,7 @@ export const PedidosList = () => {
         <>
             {error && <p>Hubo un error</p>}
             <Table data={pedidos} columns={columns} dbColumns={dbcolumns} title='Pedidos' createLink='create' createText='Crear Pedido' label='Buscar Pedido' 
-        deleteFunction={handleDelete} tituloDocumento={'Pedido'} nombreArchivo={'Pedido'}
+        deleteFunction={(handleDelete)} tituloDocumento={'Pedido'} nombreArchivo={'Pedido'}
         buttonsActions={buttonsActions}/>
          {showModal &&
 				createPortal(

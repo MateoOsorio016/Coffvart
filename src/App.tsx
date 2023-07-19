@@ -50,7 +50,9 @@ import {ProveedoresEdit} from "./Pages/Proveedores/ProveedoresEdit";
 
 
 export default function App() {
+ 
   return (
+    
     <HashRouter basename="/">
       <div className="App">
         <Routes>
@@ -113,5 +115,7 @@ export default function App() {
         </Routes>
       </div>
     </HashRouter>
+    
   );
 }
+

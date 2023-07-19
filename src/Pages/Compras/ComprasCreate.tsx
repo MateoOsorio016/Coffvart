@@ -33,7 +33,7 @@ export const ComprasCreate = () => {
 		} else if (total === '') {
 			setControlErrors({
 				...controlErrors,
-				total: 'El total es requerido',
+				total: 'El proveedor es requerido',
 			});
 			return;
 		}
@@ -74,16 +74,16 @@ export const ComprasCreate = () => {
 		{
 			name: 'producto',
 			type: 'select',
-			label: 'Producto',
+			label: 'Insumo',
 			options: [
 				{ value: 'Café oscuro', label: 'Café oscuro' },
 				{ value: 'Café amaretto', label: 'Café amaretto' },
 			],
 		},
 		{
-			name: 'cantidad',
+			name: 'Subtotal',
 			type: 'number',
-			label: 'Cantidad',
+			label: 'SubTotal',
 		},
 		{
 			name: 'iva',
@@ -96,8 +96,22 @@ export const ComprasCreate = () => {
 			],
 		},
 		{
+			name: 'cantidad',
+			type: 'number',
+			label: 'Cantidad',
+		},
+		{
 			name: 'total',
-			type: 'text',
+			type: 'select',
+			label: 'Proveedor',
+			options: [
+				{ value: 'Café finca Pueblo Rico', label: 'Café finca Pueblo Rico' },
+				{ value: 'Café finca Santa Rosa', label: 'Café finca Santa Rosa' },
+			],
+		},
+		{
+			name: 'total',
+			type: 'number',
 			label: 'Total',
 		},
 	];
@@ -140,23 +154,32 @@ export const ComprasCreate = () => {
 	
 		return (
 			<>
+			<Button text='Agregar Insumo' onClick={()=> null}/>
 				<Table
-					columns={['ID', 'Producto', 'Cantidad', 'Valor Unitario']}
+					columns={['Categoría', 'Insumo', 'Cantidad', 'Costo', 'Sub-Total', 'Iva', 'SubTotal IVA', 'Total']}
 					data={[
 						{
-							id: 1,
-							producto: 'Café Oscuro Amargo 300 Gr',
-							cantidad: '- 15 +',
-							valorU: '15.000'
+							Categoría: "Café en grano",
+							Insumo: 'Café en grano de finca de pueblo rico',
+							Cantidad: '- 15 +',
+							Costo: '15.000',
+							SubTotal: '150.000',
+							Iva: '8%',
+							SubTotalIVA: '185.000',
+							Total: '200.000'
 						},
 						{
-							id: 2,
-							producto: 'Café Oscuro Dulce 300 Gr',
-							cantidad: '- 20 +',
-							valorU: '25.000'
+							Categoría: "Café en polvo",
+							Insumo: 'Café en polvo de finca de pueblo rico',
+							Cantidad: '- 15 +',
+							Costo: '15.000',
+							SubTotal: '150.000',
+							Iva: '8%',
+							SubTotalIVA: '185.000',
+							Total: '200.000'
 						}
 					]}
-					dbColumns={['id', 'producto', 'cantidad', 'valorU']}
+					dbColumns={['Categoría', 'Insumo', 'Cantidad', 'Costo', 'SubTotal', 'Iva', 'SubTotalIVA', 'Total']}
 					deleteFunction={()=>null}
 					editButton={false}
 					actionsTableOptions={false}

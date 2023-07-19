@@ -34,11 +34,43 @@ export const ComprasList = () => {
       }
     });
   }
+  interface Compra {
+    id: number;
+    Insumo: string;
+    Cantidad: string;
+    Costo: number;
+    SubTotal: string;
+    Iva: number;
+    Total: String;
+    Estado: string;
+  }
+  
 
-  const dbcolumns = ["id", "producto", "cantidad", "iva", "total"];
-  const columns = ["id", "Producto", "Cantidad", "Iva", "Total"];
-  const shop = data.shops || data;
+  
+
+  const dbcolumns = ["id", "Insumo", "Cantidad", "Costo", "SubTotal", "Iva", "Total", "Estado"];
+  const columns = ["id", "Insumo", "Cantidad", "Costo", "SubTotal", "Iva", "Total", "Estado"];
+  const compras: Compra[] = data.compras || data;
   console.log(data);
+
+  const datoQuemado = 148000; // Valor que deseas agregar a la columna 'Total'
+      
+  const nuevaCompra: Compra = {
+    id: 1,
+    Insumo: 'Café en grano finca pueblo rico',
+    Cantidad: '100 KG',
+    Costo: datoQuemado,
+    SubTotal: '248000',
+    Iva: 8,
+    Total: '3000000',
+    Estado: 'Pendiente'
+  };
+
+  const existeRegistro = compras.some((pedido: Compra) => pedido.id === nuevaCompra.id);
+      
+      if (!existeRegistro) {
+        compras.push(nuevaCompra); // Agregar el nuevo pedido solo si no existe previamente
+      }
 
   const buttonsActions = [
     {
@@ -55,7 +87,7 @@ export const ComprasList = () => {
     <>
       {error && <p>Hubo un error</p>}
       <Table
-        data={shop}
+        data={compras}
         columns={columns}
         dbColumns={dbcolumns}
         title="Compras"
@@ -77,26 +109,26 @@ export const ComprasList = () => {
   );
 };
 const DetalleCompra = ({ showModal }: any) => {
-  const { data } = useFetch({ url: "http://localhost:3000/api/shop" });
-  const dbcolumns = ["id", "producto", "cantidad", "iva", "total"];
-  const columns = ["id", "Producto", "Cantidad", "Iva", "Total"];
-  const shop = data.shops || data;
-  return (
-    <ModalContainer ShowModal={showModal}>
-      <Modal showModal={showModal} title="Compra">
-        <Table
-          data={shop}
-          columns={columns}
-          dbColumns={dbcolumns}
-          title=""
-          createLink=""
-          createText=""
-          label=""
-          deleteFunction={() => false}
-          tituloDocumento={"Compras"}
-          nombreArchivo={"Compras"}
-        />
-      </Modal>
-    </ModalContainer>
-  );
+  const dbcolumns = ["id", "Insumo", "Cantidad", "Costo", "SubTotal", "Iva", "Total", "Estado"];
+  const columns = ["id", "Insumo", "Cantidad", "Costo", "SubTotal", "Iva", "Total", "Estado"];
+   const products = [
+    {
+      id: 1,
+      Insumo: 'Café en grano finca pueblo rico',
+      Cantidad: '100 KG',
+      Costo: 148000,
+      Total: '248000',
+      Iva: 8,
+      SubtTotalIva: '3000000',
+      Estado: 'Pendiente'
+    }
+  ]
+return (
+  <ModalContainer ShowModal={showModal}>
+    <Modal showModal={showModal} title='Detalle'>
+          <Table data={products} columns={columns} dbColumns={dbcolumns} title='' createLink='' createText='' label='' 
+      deleteFunction={()=>false} tituloDocumento={'Pedidos'} nombreArchivo={'Pedidos'}/>
+    </Modal>
+  </ModalContainer>
+);
 };

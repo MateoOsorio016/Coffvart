@@ -34,7 +34,7 @@ export const InsumosList = () => {
   }
 
   const dbcolumns = ['id', 'nombre', 'costoSaco', 'cantidad', 'categoria', 'descripcion'];
-  const columns = ['id', 'Nombre', 'costo Saco', 'Cantidad', 'Categoría', 'Descripción'];
+  const columns = ['id', 'Nombre', 'costo Saco', 'Cantidad', 'Categoría', 'Proveedor'];
   const insumos = data.insumos || data;
 
   const buttonsActions = [

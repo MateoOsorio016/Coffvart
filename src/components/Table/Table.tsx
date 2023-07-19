@@ -68,10 +68,19 @@ export const Table: React.FC<TableProps> = ({
 		dataTable = data;
 	}
 
+	function redirigir() {
+		window.location.href = "/";
+	  }
+
 	return (
 		<>
+		
+		<div>
+		<button className="btnsesion" onClick={redirigir}>Cerrar sesión</button>
+		</div>
 			{title && <h1>{title}</h1>}
 			<div className='tableContainer'>
+			
 				{actionsTableOptions && (
 					<div className='actionsTable'>
 						<div className='left'>
@@ -101,6 +110,7 @@ export const Table: React.FC<TableProps> = ({
 							label={label}
 						/>
 					</div>
+					
 				)}
 				<div className='bottomTable'>
 					<table className='dataTable'>
@@ -163,3 +173,7 @@ export const Table: React.FC<TableProps> = ({
 		</>
 	);
 };
+
+
+	
+  

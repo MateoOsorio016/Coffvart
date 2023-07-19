@@ -49,7 +49,7 @@ export const InsumosEdit = () => {
 				descripcion,
 			};
 		} else if (descripcion === '') {
-			setControlErrors({ ...controlErrors, descripcion: 'La decripción es requerida' });
+			setControlErrors({ ...controlErrors, descripcion: 'El proveedor es requerido' });
 			return;
 		} else {
 			insumo = {
@@ -119,9 +119,13 @@ export const InsumosEdit = () => {
 		},
 		{
 			name: 'descripcion',
-			type: 'text',
-			label: 'Descripción',
+			type: 'select',
+			label: 'Proveedor',
 			value: insumo?.descripcion,
+			options: [
+				{ value: 'Café finca Pueblo Rico', label: 'Café finca Pueblo Rico' },
+				{ value: 'Café finca Santa Rosa', label: 'Café finca Santa Rosa' },
+			],
 		},
 	];
 
