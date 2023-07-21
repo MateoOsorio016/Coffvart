@@ -3,7 +3,7 @@
 .btn--filled {
 	display: block;
 	padding: 0.5rem 1rem;
-	width: 50%;
+	width: 70%;
 	border-radius: 10px;
 	color: #fff;
 	font-size: 1rem;
@@ -28,7 +28,7 @@
 .btn--outline{
     display: block;
     padding: 0.5rem 1rem;
-    width: 50%;
+    width: 70%;
     border-radius: 10px;
     color: #9f212f;
     font-size: 1rem;

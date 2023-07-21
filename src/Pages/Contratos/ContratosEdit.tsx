@@ -4,6 +4,7 @@ import { useFetch } from '../../Hooks/useFetch';
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { Table } from '../../components/Table/Table';
 
 export const ContratosEdit = () => {
 
@@ -109,6 +110,12 @@ export const ContratosEdit = () => {
 
 	const contratosFields: FormField[] = [
 		{
+            name: '_id',
+            type: 'text',
+            value: contract?._id,
+            label: 'ID Contrato',
+        },
+		{
 			name: 'nombreEmpresa',
 			type: 'text',
 			value: contract?.nombreEmpresa,
@@ -204,7 +211,62 @@ export const ContratosEdit = () => {
 				button={<Button text={'Editar Contrato'} onClick={() => null} />}
 				errors={controlErrors}
 				editable={true}
+				extraElements={<TableCreateContrato />}
+			/>
+		</>
+	);
+}
+const TableCreateContrato = () => {
+	// const [data, setData] = useState<any[]>([]);
+	// const tableCreate: FormField[] = [
+	//     {
+	//         name: 'permisos',
+	//         type: 'select',
+	//         label: 'Permisos',
+	//         options: [
+	//             { value: '1', label: 'Permiso 1' },
+	//             { value: '2', label: 'Permiso 2' },
+	//             { value: '3', label: 'Permiso 3' },
+	//             { value: '4', label: 'Permiso 4' },
+	//         ]
+	//     }
+	// ]
+
+	// function handleDelete(id: string) {
+
+	//     const newData = data.filter((item: any) => item.id !== id);
+
+	//     setData(newData);
+
+	// }
+
+	return (
+		<><Button text='Agregar Producto' onClick={()=> null}/>
+			<Table
+				columns={['ID', 'Producto', 'Cantidad', 'Valor Unitario']}
+				data={[
+					{
+						id: 1,
+						producto: 'Café Oscuro Amargo 300 Gr',
+						cantidad: '- 15 +',
+						valorU: '15.000'
+					},
+					{
+						id: 2,
+						producto: 'Café Oscuro Dulce 300 Gr',
+						cantidad: '- 20 +',
+						valorU: '25.000'
+					}
+				]}
+				dbColumns={['id', 'producto', 'cantidad', 'valorU']}
+				deleteFunction={()=>null}
+				editButton={false}
+				actionsTableOptions={false}
+				tituloDocumento=''
+				nombreArchivo=''
+				showLogoutButton={false}
 			/>
 		</>
 	);
 };
+

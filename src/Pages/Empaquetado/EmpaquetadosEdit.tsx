@@ -4,6 +4,8 @@ import { useFetch } from '../../Hooks/useFetch';
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { Table } from '../../components/Table/Table';
+
 
 export const EmpaquetadosEdit = () => {
 
@@ -79,6 +81,12 @@ export const EmpaquetadosEdit = () => {
 
 
 	const empaquetadoFields: FormField[] = [
+		{
+            name: '_id',
+            type: 'text',
+            value: empaquetado?._id,
+            label: 'ID Empaquetado',
+        },
         {
             name: "insumo",
             type: "select",
@@ -111,12 +119,23 @@ export const EmpaquetadosEdit = () => {
           //  value: empaquetado?.fechaInicio,
           //  label: 'Fecha Inicio',
         //},
+		{
+            name: 'fechaCompromiso',
+            type: 'date',
+            label: 'Fecha de Compromiso',
+        },
+		{
+            name: 'fechaEstado',
+            type: 'date',
+            label: 'Fecha de Estado',
+        },
         {
             name: 'estado',
             type: 'select',
             value: empaquetado?.estado,
             label: 'Estado',
             options: [
+				{ value: 'Inicial', label: 'Inicial' },
                 { value: 'EnProceso', label: 'En Proceso' },
                 { value: 'Finalizado', label: 'Finalizado' },
 			
@@ -132,8 +151,66 @@ export const EmpaquetadosEdit = () => {
 				button={<Button text={'Editar Empaquetado'} onClick={() => null} />}
 				errors={controlErrors}
 				editable={true}
+				extraElements={<TableCreateEmpaquetado />}
+			/>
+		</>
+	);
+}
+const TableCreateEmpaquetado = () => {
+	// const [data, setData] = useState<any[]>([]);
+	// const tableCreate: FormField[] = [
+	//     {
+	//         name: 'permisos',
+	//         type: 'select',
+	//         label: 'Permisos',
+	//         options: [
+	//             { value: '1', label: 'Permiso 1' },
+	//             { value: '2', label: 'Permiso 2' },
+	//             { value: '3', label: 'Permiso 3' },
+	//             { value: '4', label: 'Permiso 4' },
+	//         ]
+	//     }
+	// ]
+
+	// function handleDelete(id: string) {
+
+	//     const newData = data.filter((item: any) => item.id !== id);
+
+	//     setData(newData);
+
+	// }
+
+	return (
+		<><Button text='Agregar Producto' onClick={()=> null}/>
+			<Table
+				columns={['ID', 'Producto', 'Cantidad', 'Valor Unitario','Estado Actual']}
+				data={[
+					{
+						id: 1,
+						producto: 'Café Oscuro 500gr ',
+						cantidad: '- 15 +',
+						valorU: '15.000',
+						estado:'En Proceso'
+					},
+					{
+						id: 2,
+						producto: 'Café Oscuro 250gr ',
+						cantidad: '- 20 +',
+						valorU: '25.000',
+						estado: 'Finalizado'
+					}
+				]}
+				dbColumns={['id', 'producto', 'cantidad', 'valorU','estado']}
+				deleteFunction={()=>null}
+				editButton={false}
+				actionsTableOptions={false}
+				tituloDocumento=''
+				nombreArchivo=''
+				showLogoutButton={false}
+				deleteButton={false}
 			/>
 		</>
 	);
 };
+
 

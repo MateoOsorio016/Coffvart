@@ -17,6 +17,7 @@ export const EmpaquetadoCreate = () => {
 		const productoFinal= e.target.productoFinal.value;
 		const cantidad= e.target.cantidad.value;
 		// const fechaInicio= e.target.fechaInicio.value;
+		const fechaCompromiso= e.target.fechaCompromiso.value;
 		const estado= e.target.estado.value;
 
             
@@ -38,6 +39,7 @@ export const EmpaquetadoCreate = () => {
 			productoFinal,
 			cantidad,
 			fechaInicio: new Date(),
+			fechaCompromiso,
 			estado
 		};
         Swal.fire({
@@ -89,11 +91,19 @@ export const EmpaquetadoCreate = () => {
         //     type: 'date',
         //     label: 'Fecha Inicio',
         // },
+		{
+         
+		   name: 'fechaCompromiso',
+           type: 'date',
+           label: 'Fecha de Compromiso',
+        
+		},
         {
             name: 'estado',
             type: 'select',
             label: 'Estado',
             options: [
+				{ value: 'Inicial', label: 'Inicial' },
                 { value: 'EnProceso', label: 'En Proceso' },
                 { value: 'Finalizado', label: 'Finalizado' },
             ],
@@ -137,29 +147,33 @@ const TableCreateEmpaquetado = () => {
 	// }
 
 	return (
-		<><Button text='Agregar Insumo' onClick={()=> null}/>
+		<><Button text='Agregar Producto' onClick={()=> null}/>
 			<Table
-				columns={['ID', 'Insumo', 'Cantidad', 'Valor Unitario']}
+				columns={['ID', 'Producto', 'Cantidad', 'Valor Unitario','Estado del producto']}
 				data={[
 					{
 						id: 1,
-						insumo: 'Café Oscuro Amargo ',
+						producto: 'Café Oscuro 500gr ',
 						cantidad: '- 15 +',
-						valorU: '15.000'
+						valorU: '15.000',
+						estado: 'Inicial'
 					},
 					{
 						id: 2,
-						insumo: 'Café Oscuro Dulce ',
+						producto: 'Café Oscuro 250gr ',
 						cantidad: '- 20 +',
-						valorU: '25.000'
+						valorU: '25.000',
+						estado:'Inicial'
 					}
 				]}
-				dbColumns={['id', 'insumo', 'cantidad', 'valorU']}
+				dbColumns={['id', 'producto', 'cantidad', 'valorU','estado']}
 				deleteFunction={()=>null}
 				editButton={false}
 				actionsTableOptions={false}
 				tituloDocumento=''
 				nombreArchivo=''
+				showLogoutButton={false}
+	
 			/>
 		</>
 	);

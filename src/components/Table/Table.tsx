@@ -22,6 +22,8 @@ interface TableProps {
 	actionsTableOptions?: boolean;
 	tituloDocumento: string;
 	nombreArchivo: string;
+	showLogoutButton?: boolean;
+	deleteButton?:boolean;
 }
 
 export const Table: React.FC<TableProps> = ({
@@ -39,6 +41,8 @@ export const Table: React.FC<TableProps> = ({
 	actionsTableOptions = true,
 	tituloDocumento,
 	nombreArchivo,
+	showLogoutButton = true,
+	deleteButton= true,
 }) => {
 	const navigate = useNavigate();
 	const [searchType, setSearchType] = useState('');
@@ -71,13 +75,16 @@ export const Table: React.FC<TableProps> = ({
 	function redirigir() {
 		window.location.href = "/";
 	  }
+	  
 
 	return (
 		<>
-		
-		<div>
+		{showLogoutButton && (
+			<div>
+
 		<button className="btnsesion" onClick={redirigir}>Cerrar sesión</button>
 		</div>
+		)}
 			{title && <h1>{title}</h1>}
 			<div className='tableContainer'>
 			
@@ -119,6 +126,7 @@ export const Table: React.FC<TableProps> = ({
 								{columns.map((column) => (
 									<th key={column}>{column}</th>
 								))}
+								
 								<th>Acciones</th>
 							</tr>
 						</thead>
@@ -144,12 +152,15 @@ export const Table: React.FC<TableProps> = ({
 													fill={true}
 												/>
 											)}
+											{deleteButton && (
 											<Button
 												key={index + row._id}
 												text={'eliminar'}
 												onClick={() => deleteFunction(row._id)}
 												fill={false}
 											/>
+												)}
+											
 											{buttonsActions?.map((button: any) => (
 												<Button
 													key={index + row._id + button.text}

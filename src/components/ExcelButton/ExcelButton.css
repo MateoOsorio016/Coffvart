@@ -9,6 +9,7 @@
     font-size: 1.4rem; /* Aumenta el tamaño de la fuente */
     cursor: pointer;
     transition: .3s ease-in-out;
+    border-radius: 0.5rem;
 }
 
 .excelButton:hover {

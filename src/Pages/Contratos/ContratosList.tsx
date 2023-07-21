@@ -30,10 +30,13 @@ export const ContratosList = () => {
       }
     });
   }
+  function redirigirP() {
+		window.location.href = "/#/admin/pagos";
+	  }
 
-    const columns = ['id','nombre Empresa','NIT','Dirección','Nombre Representante','Correo Representante','Producto','Comisión','Duración','Cobro','Fecha del Contrato','Estado',];
+    const columns = ['id','nombre Empresa','NIT','Dirección','Nombre Representante','Correo Representante','Producto','Comisión','Duración','Cobro','Fecha del Contrato','Fecha Fin','Estado',];
     
-    const dbcolumns =['id','nombreEmpresa','NIT','direccion','nombreRepresentante','correoRepresentante','producto','comision','duracion','cobro','fecha','estado'];
+    const dbcolumns =['id','nombreEmpresa','NIT','direccion','nombreRepresentante','correoRepresentante','producto','comision','duracion','cobro','fecha','fechaFin','estado'];
     const contratos= data.contracts || data;
     const buttonsActions = [
         {
@@ -43,8 +46,7 @@ export const ContratosList = () => {
         },
         {
           text: 'Pago',
-          onClick: () => handleShowModal(),
-          fill: true,
+          onClick: (redirigirP) 
         }
     ];
     const [showModal, setShowModal] = useState(false);

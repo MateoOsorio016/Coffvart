@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Table } from '../../components/Table/Table';
+import { FaSleigh } from 'react-icons/fa';
 
 export const ContratosCreate = () => {
 	const navigate = useNavigate();
@@ -26,6 +27,7 @@ export const ContratosCreate = () => {
 		const comision = e.target.comision.value;
 		const duracion = e.target.duracion.value;
 		const cobro = e.target.cobro.value;
+		//const fechaFin = e.target.fechaFin.value;
 		//const fecha = e.target.fecha.value;
 		const estado = e.target.estado.value;
 		if (nombreEmpresa === '') {
@@ -78,6 +80,7 @@ export const ContratosCreate = () => {
 			comision,
 			duracion,
 			cobro,
+			fechaFin:'2023-07-27',
 			//fecha,
 			estado,
 		};
@@ -169,6 +172,11 @@ export const ContratosCreate = () => {
 		//	label: 'Fecha de Contrato',
 		//},
 		{
+			name: 'fechaFin',
+			type: 'date',
+			label: 'Fecha fin del contrato ',
+		},
+		{
 			name: 'estado',
 			type: 'select',
 			label: 'Estado',
@@ -240,6 +248,7 @@ const TableCreateContrato = () => {
 				actionsTableOptions={false}
 				tituloDocumento=''
 				nombreArchivo=''
+				showLogoutButton={false}
 			/>
 		</>
 	);

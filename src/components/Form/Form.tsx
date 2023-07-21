@@ -68,14 +68,20 @@ export const Form: FC<FormProps> = ({
     });
     setFormEdit(updatedFormEdit);
   }
+  const groups: FormField[][] = [];
+  for (let i = 0; i < fields.length; i += 3) {
+    groups.push(fields.slice(i, i + 3));
+  }
 
   return (
     <>
       <div className="card">
         {title && <h1>{title}</h1>}
         <form onSubmit={onSubmit}>
-          <div className="formRow">
-            {fields?.map(({ name, type, label, placeholder, value, options }) => {
+          {/* Renderizar los grupos de inputs */}
+          {groups.map((group, groupIndex) => (
+          <div className="formRow" key={groupIndex}>
+            {group.map(({ name, type, label, placeholder, value, options }) => {
               switch (type) {
                 case "hidden": {
                   return (
@@ -196,6 +202,7 @@ export const Form: FC<FormProps> = ({
               }
             })}
           </div>
+          ))}
           {extraElements && extraElements}
           {button}
           {cancelButton && (

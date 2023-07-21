@@ -35,13 +35,14 @@ export const EmpaquetadoList = () => {
 		'Prodcuto Final',
 		'Cantidad',
 		'Fecha Inicio',
+		'Fecha de Compromiso',
 		'Estado',
 	];
-	const dbcolumns =['id','insumo','productoFinal','cantidad','fechaInicio','estado']
+	const dbcolumns =['id','insumo','productoFinal','cantidad','fechaInicio','fechaCompromiso','estado']
 	const empaquetados = data.empaquetados || data; 
 	const buttonsActions = [
         {
-            text: 'D',
+            text: 'Ver Detalle',
         onClick: () => handleShowModal(),
             fill: true,
         },

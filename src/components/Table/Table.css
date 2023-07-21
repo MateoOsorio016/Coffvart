@@ -147,6 +147,14 @@
     border-radius: 50%;
     animation: animate .5s linear infinite;
 }
+.createButton {
+    font-size: 3rem;
+    padding: 1rem;
+    margin-left: 42rem;
+    margin-right: 40rem;
+    background-color: rgba(209, 209, 209, 0.74);
+    border-radius: 0.5rem;
+}
 
 @keyframes animate {
     0% {

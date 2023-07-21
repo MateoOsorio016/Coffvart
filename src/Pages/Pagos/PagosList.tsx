@@ -59,8 +59,10 @@ export const PagosList = () => {
             label='Buscar pago' 
             deleteFunction={handleDelete}
             tituloDocumento={'Pagos'}
-            nombreArchivo={'Pagos'}
+            nombreArchivo={'Pagos'} 
+            deleteButton={false}
             buttonsActions={buttonsActions}/>
+           
             {showModal &&
 				createPortal(
 					<DetallePago showModal={setShowModal} />,
