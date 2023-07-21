@@ -1,5 +1,7 @@
 import { useFetch } from "../../Hooks/useFetch";
-import { Table } from "../../components/Table/Table";
+import { Table } from "../../components/Table/Tablep";
+import { Button } from '../../components/Button/Button';
+
 import Swal from "sweetalert2";
 import { useState } from 'react';
 import { ModalContainer, Modal } from '../../components/Modal/Modal';
@@ -26,7 +28,7 @@ export const PedidosList = () => {
               setMethodState("GET");
             }, 500);
     
-            Swal.fire("Pedido eliminada con éxito!", "", "success");
+            Swal.fire("Estado cambiado con éxito!", "", "success");
           }
           if (result.isDenied) {
             Swal.fire("Cancelado", "", "info");
@@ -81,9 +83,11 @@ export const PedidosList = () => {
     setShowModal(true);
 }
     return (
+      
         <>
+
             {error && <p>Hubo un error</p>}
-            <Table data={pedidos} columns={columns} dbColumns={dbcolumns} title='Pedidos' createLink='create' createText='Crear Pedido' label='Buscar Pedido' 
+            <Table  data={pedidos} columns={columns} dbColumns={dbcolumns} title='Pedidos' createLink='create' createText='Crear Pedido' label='Buscar Pedido' 
         deleteFunction={(handleDelete)} tituloDocumento={'Pedido'} nombreArchivo={'Pedido'}
         buttonsActions={buttonsActions}/>
          {showModal &&

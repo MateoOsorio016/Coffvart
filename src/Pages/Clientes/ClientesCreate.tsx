@@ -1,91 +1,54 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, FormField } from "../../components/Form/Form";
 import { Button } from '../../components/Button/Button';
 import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 
 export const ClientesCreate = () => {
-  const [formObject, setFormObject] = useState<FormField[]>([
-    {
-      name: "tipocliente",
-      label: "Tipo de Cliente",
-      type: "select",
-      options: [
-        { value: "persona", label: "Persona" },
-        { value: "empresa", label: "Empresa" },
-      ],
-    },
-  ]);
-  const [titulo, setTitulo] = useState('Tipo de Cliente');
-  const [NombreB, setNombreB] = useState('Seleccionar');
-  const [buttonCreate, setButtonCreate] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
+  const [formObject, setFormObject] = useState<FormField[]>([]);
   const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
   const [controlErrors, setControlErrors] = useState<{ [key: string]: string }>({});
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+
+  const navigate = useNavigate();
 
   function handleCreate() {
-    setIsFormSubmitted(true);
     const hasErrors = Object.keys(controlErrors).length > 0;
 
     if (hasErrors) {
       return;
     }
 
-    Swal.fire({
-      title: 'Cliente Creado con éxito',
-      showDenyButton: true,
-      denyButtonText: `Cancelar`,
-      confirmButtonText: '¿Estás seguro de crear este Cliente?',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire('Cliente creado con éxito!', '', 'success');
-        window.location.href = '/#/admin/clientes';
-      }
-    });
-  }
-
-  useEffect(() => {
-    setIsFormSubmitted(true);
-    validateForm();
-  }, [formValues, formObject]);
-
-  function validateForm() {
-    const errors: { [key: string]: string } = {};
-    formObject.forEach((field) => {
-      if (!formValues[field.name] && isFormSubmitted) {
-        errors[field.name] = `${field.label} es requerido`;
-      }
-    });
-    setControlErrors(errors);
-  }
-
-  function handleSumbit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    const form = e.currentTarget;
-    let hasErrors = false;
-    const errors: { [key: string]: string } = {};
-    const values: { [key: string]: string } = {};
-
-    formObject.forEach((field) => {
-      values[field.name] = form[field.name].value;
-      if (!form[field.name].value) {
-        errors[field.name] = `${field.label} es requerido`;
-        hasErrors = true;
-      }
-    });
-
-    setFormValues(values);
-    setControlErrors(errors);
-
-    if (hasErrors) {
-      setIsFormSubmitted(true);
-      return;
+    if (selectedOption === "") {
+      // Si no se ha seleccionado ninguna opción, mostramos un alert indicando que se debe seleccionar una opción
+      Swal.fire({
+        title: 'Debe seleccionar un tipo de cliente',
+        icon: 'warning',
+        confirmButtonText: 'Aceptar',
+      });
+    } else {
+      // Mostrar SweetAlert para confirmar la acción de crear un cliente
+      Swal.fire({
+        title: '¿Estás seguro de crear este Cliente?',
+        showDenyButton: true,
+        denyButtonText: `Cancelar`,
+        confirmButtonText: 'Crear',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Aquí deberíamos guardar los datos o enviar el formulario, si es necesario
+          Swal.fire('Cliente creado con éxito!', '', 'success');
+          navigate('/admin/clientes'); // Redirigir al usuario a la tabla después de crear el cliente
+        } 
+      });
     }
+  }
 
-    if (formValues.tipocliente === "persona") {
-      setButtonCreate(true);
-      setTitulo('Crear Persona');
-      setNombreB('Crear Persona');
+  function handleSelectChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    const selectedValue = e.target.value;
+
+    setSelectedOption(selectedValue);
+
+    if (selectedValue === "persona") {
       setFormObject([
         {
           name: "NIT",
@@ -125,15 +88,10 @@ export const ClientesCreate = () => {
             { value: "Activo", label: "Activo" },
             { value: "Inactivo", label: "Inactivo" },
           ],
-        },
-        
-      ]);
-    } else if (formValues.tipocliente === 'empresa') {
-      setTitulo('Crear Empresa');
-      setNombreB('Crear empresa');
-      setButtonCreate(true);
+        },      ]);
+    } else if (selectedValue === 'empresa') {
       setFormObject([
-        {
+ {
           name: "nit",
           label: "Nit",
           type: "text",
@@ -185,29 +143,41 @@ export const ClientesCreate = () => {
             { value: "Activo", label: "Activo" },
             { value: "Inactivo", label: "Inactivo" },
           ],
-        },
-      ]);
+        },      ]);
     }
-    setControlErrors({});
-    validateForm();
-    
+
+    setFormValues({
+      ...formValues,
+      tipocliente: selectedValue,
+    });
   }
 
-  function handleSelectChange() {
-    // No hacer nada cuando se selecciona una opción
-  }
+  useEffect(() => {
+    const selectElement = document.getElementById('tipocliente') as HTMLSelectElement;
+    selectElement.style.width = '100%';
+    selectElement.style.padding = '10px';
+    selectElement.style.fontSize = '16px';
+    selectElement.style.border = '1px solid #ccc';
+    selectElement.style.borderRadius = '5px';
+    selectElement.style.outline = 'none';
+  }, []);
 
   return (
-    <Form
-      title={titulo}
-      fields={formObject}
-      onSubmit={handleSumbit}
-      button={buttonCreate ? (
-        <Button text={NombreB} onClick={handleCreate} />
-      ) : (
-        <Button text={NombreB} onClick={handleSelectChange} />
-      )}
-      errors={controlErrors}
-    />
+    <div>
+      <label htmlFor="tipocliente">Tipo de Cliente:</label>
+      <select id="tipocliente" value={selectedOption} onChange={handleSelectChange}>
+        <option value="">Seleccionar</option>
+        <option value="persona">Persona</option>
+        <option value="empresa">Empresa</option>
+      </select>
+
+      <Form
+        title={selectedOption === "persona" ? "Crear Persona" : "Crear Empresa"}
+        fields={formObject}
+        onSubmit={handleCreate}
+        button={<Button text="Crear" onClick={handleCreate} />}
+        errors={controlErrors}
+      />
+    </div>
   );
 };

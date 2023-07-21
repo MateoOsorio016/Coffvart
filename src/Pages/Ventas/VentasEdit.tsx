@@ -25,68 +25,65 @@ export const VentasEdit = () => {
 		const Factura = e.target.Factura.value;
 		const Cliente = e.target.Cliente.value;
 		const Producto = e.target.Producto.value;
-		const Cantidad = e.target.Cantidad.value;
-
-		let ventas = {};
+		const Cantidad= e.target.Cantidad.value;
+        const Estado= e.target.Estado.Value;
 
 		if (Factura === '') {
-			ventas = {
-				_id: id,
-				Factura,
-				Cliente,
-				Producto,
-				Cantidad
-			}
+			setControlErrors({ ...controlErrors, Factura: 'El Factura es requerida' });
+			return;
 		} else if (Cliente === '') {
 			setControlErrors({
 				...controlErrors,
-				Cliente: 'La cantidad es requerida',
+				Cliente: 'El cliente es requerido',
 			});
 			return;
 		} else if (Producto === '') {
-			ventas = {
-				_id: id,
-				Factura,
-				Cliente,
-				Producto,
-				Cantidad
-			}
-
-		} else if (Factura === '') {
-			setControlErrors({ ...controlErrors, Factura: 'La factura es requerida' });
+			setControlErrors({ ...controlErrors, Producto: 'El Producto es requerido' });
 			return;
-
-		} else {
-			ventas = {
-				_id: id,
-				Factura,
-				Cliente,
-				Producto,
-				Cantidad
+		} else if (Cantidad === '') {
+			setControlErrors({
+				...controlErrors,
+				Cantidad: 'La cantidad es requerida',
 			}
-
-			setUrlState(`https://coffevart.onrender.com/api/ventas`);
-			setMethodState('PUT');
-			setBodyRequest(ventas);
-
-			if (!error) {
-				Swal.fire({
-					icon: 'success',
-					title: 'Éxito',
-					text: 'La compra se ha editado con éxito',
-					showConfirmButton: false,
-					timer: 1500,
-					timerProgressBar: true,
-				}).then(() => {
-					navigate('/admin/compras');
-				});
-			}
-
-			console.log(error);
-
-			console.log(data);
-
+			
+			);
+			return;
+		}else if(Estado== ''){
+			setControlErrors({...controlErrors, Cantidad: 'La cantidad es requerida'});
+			return;
 		}
+
+        Swal.fire({
+			title: 'Confirmar',
+			text: '¿Deseas Editar la venta?',
+			icon: 'question',
+			showCancelButton: true,
+			confirmButtonText: 'Sí',
+			cancelButtonText: 'No',
+		}).then((result) => {
+			if (result.isConfirmed) {
+				const ventas = {
+					Factura,
+                    Cliente,
+					Producto,
+					Cantidad,
+					Estado,
+                    
+				};
+				Swal.fire("Venta Editada con éxito!", "", "success");
+				setBodyRequest(ventas); 
+				if (!error) {
+					navigate('/admin/ventas');
+				}
+			}
+		});
+
+		console.log(error)
+
+        // console.log(error);
+
+        // console.log(user);
+        // console.log(data);
 
 	}
 
@@ -156,6 +153,7 @@ export const VentasEdit = () => {
 			</>
 		);
 	}
+	
 		const TableCreateCompra = () => {
 			// const [data, setData] = useState<any[]>([]);
 			// const tableCreate: FormField[] = [
@@ -215,3 +213,4 @@ export const VentasEdit = () => {
 				</>
 			);
 };
+

@@ -1,5 +1,5 @@
 import { useFetch } from "../../Hooks/useFetch";
-import { Table } from "../../components/Table/Table";
+import { Table } from "../../components/Table/Tablex";
 import Swal from "sweetalert2";
 import { useState } from 'react';
 import { ModalContainer, Modal } from '../../components/Modal/Modal';
@@ -53,7 +53,8 @@ export const VentasList = () => {
       Cliente: 'Mateo Osorio',
       Subtotal: 198000,
       Estado: datoQuemado
-    };
+    
+  };
     const existeRegistro = ventas.some((pedido: Venta) => pedido.id === nuevoPedido.id);
       
     if (!existeRegistro) {

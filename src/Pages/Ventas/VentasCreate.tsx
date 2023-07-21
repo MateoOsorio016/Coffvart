@@ -16,12 +16,11 @@ export const VentasCreate = () => {
 		const Factura = e.target.Factura.value;
 		const Cliente = e.target.Cliente.value;
 		const Producto = e.target.Producto.value;
-		const Subtotal = e.target.Subtotal.value;
-        const IVA= e.target.IVA.value
-        
+		const Cantidad= e.target.Cantidad.value;
+        const Estado= e.target.Estado.Value;
 
 		if (Factura === '') {
-			setControlErrors({ ...controlErrors, Factura: 'El Factura es requerido' });
+			setControlErrors({ ...controlErrors, Factura: 'El Factura es requerida' });
 			return;
 		} else if (Cliente === '') {
 			setControlErrors({
@@ -32,11 +31,16 @@ export const VentasCreate = () => {
 		} else if (Producto === '') {
 			setControlErrors({ ...controlErrors, Producto: 'El Producto es requerido' });
 			return;
-		} else if (Subtotal === '') {
+		} else if (Cantidad === '') {
 			setControlErrors({
 				...controlErrors,
-				Subtotal: 'El Subtotal es requerido',
-			});
+				Cantidad: 'La cantidad es requerida',
+			}
+			
+			);
+			return;
+		}else if(Estado== ''){
+			setControlErrors({...controlErrors, Cantidad: 'La cantidad es requerida'});
 			return;
 		}
 
@@ -53,8 +57,8 @@ export const VentasCreate = () => {
 					Factura,
                     Cliente,
 					Producto,
-					Subtotal,
-					IVA
+					Cantidad,
+					Estado,
                     
 				};
 				Swal.fire("Venta creada con éxito!", "", "success");
